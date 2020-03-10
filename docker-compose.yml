@@ -1,0 +1,33 @@
+version: "3"
+services:
+  graphqlapolloserver:
+    build: "../graphqlApolloServer"
+    ports:
+      - '4002:4002'
+    depends_on:
+      - nodeexpress
+    volumes:
+      - ../graphqlApolloServer:/usr/src/app
+
+  nodeexpress:
+    build: "../nodeExpress"
+    ports:
+      - '4001:4001'
+    depends_on:
+      - mongo
+    volumes:
+      - ../nodeExpress:/usr/src/app
+
+  mongo:
+    container_name: mongo
+    image: mongo
+    ports:
+      - '27017:27017'
+  
+  reactfront:
+    build: "../ReactHooksNextJSApolloHooksTrainig"
+    ports:
+      - '3000:3000'
+    volumes:
+      - ../ReactHooksNextJSApolloHooksTrainig:/usr/src/app
+
