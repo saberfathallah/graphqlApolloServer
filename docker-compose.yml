@@ -28,6 +28,4 @@ services:
     build: "../ReactHooksNextJSApolloHooksTrainig"
     ports:
       - '3000:3000'
-    volumes:
-      - ../ReactHooksNextJSApolloHooksTrainig:/usr/src/app
 
