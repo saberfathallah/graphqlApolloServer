@@ -1,16 +1,17 @@
 import fetch from 'node-fetch';
 
-async function getAllUSersFromMS() {
+async function getAllCategoriesFromMS() {
   const url = `${process.env.MS_USERS_URL_URI}categories`;
+
     return fetch(url, {
     method: 'GET',
   });
 }
 
-async function getAllUsers() {
-  const result = await getAllUSersFromMS();
-  const users = await result.json();
-  return users;
+async function getAllCategories() {
+  const result = await getAllCategoriesFromMS();
+  const categories = await result.json();
+  return categories;
 }
 
-export default getAllUsers;
+export default getAllCategories;
