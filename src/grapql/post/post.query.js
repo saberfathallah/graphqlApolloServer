@@ -21,7 +21,7 @@ const resolvers = {
       const posts = await getPostsByCategoryIdService(categoryId, userId);
       return posts;
     },
-    getAllPosts: async () => getAllPostsService(),
+    getAllPosts: async (_, $, { userId } ) => getAllPostsService(userId),
   },
 };
 

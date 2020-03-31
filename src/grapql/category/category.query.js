@@ -11,8 +11,8 @@ const categoryQueries = gql`
 
 const resolvers = {
   Query: {
-    getAllCategoriesQuery: async () => {
-      const categories = await getAllCategoriesServices();
+    getAllCategoriesQuery: async (_, $, { userId } ) => {
+      const categories = await getAllCategoriesServices(userId);
       return categories;
     },
   },
