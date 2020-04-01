@@ -11,6 +11,7 @@ const Categories = gql`
     name: String
     level: Int
     parentId: ID
+    children: [Category]
   }
   
   input CategoryInput {
