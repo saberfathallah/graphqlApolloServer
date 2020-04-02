@@ -10,7 +10,7 @@ const Posts = gql`
     id: ID
     description: String
     categoryId: ID
-    userId: ID
+    userId: User
     comments: [Comment]
   }
   

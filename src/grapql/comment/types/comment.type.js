@@ -4,6 +4,7 @@ const Comments = gql`
   type Comment {
     id: ID
     description: String
+    userId: User
   }
   
   input CommentInput {
