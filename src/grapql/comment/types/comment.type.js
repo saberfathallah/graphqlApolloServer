@@ -18,6 +18,22 @@ const Comments = gql`
     comment: Comment
     error: String
   }
+
+  input DeleteCommentInput {
+    postId: ID
+    commentId: ID
+  }
+
+  input UpdateCommentInput {
+    commentId: ID
+    description: String
+  }
+
+  type deleteCommentResponse {
+    postId: ID
+    commentId: ID
+    error: String
+  }
 `;
 
 export default {

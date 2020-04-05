@@ -2,7 +2,7 @@ import fetch from 'node-fetch';
 
 async function loginMS({ email, password }) {
   const url = `${process.env.MS_USERS_URL_URI}users/login`;
-  console.log("url", url)
+
   return fetch(url, {
     method: 'POST',
     body: JSON.stringify({ email, password }),
