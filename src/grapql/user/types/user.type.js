@@ -10,6 +10,7 @@ const Users = gql`
     email: String
     name: String
     password: String
+    id: ID
   }
   
   input UserInput {
