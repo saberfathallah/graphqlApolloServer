@@ -43,5 +43,5 @@ const app = express();
 server.applyMiddleware({ app });
 
 app.listen({ port: PORT }, () =>
-  console.log(`Now browse to http://localhost:${PORT}` + server.graphqlPath)
+  console.log(`Now browse  to http://localhost:${PORT}` + server.graphqlPath)
 );
