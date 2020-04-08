@@ -4,6 +4,7 @@ const Posts = gql`
   type Posts {
     error: String
     posts: [Post]
+    totalPosts: Int
   }
   
   type Post {

@@ -7,7 +7,7 @@ const postsQueries = gql`
   extend type Query {
     getPostsByUserId: PostsResponse
     getPostsByCategoryId(categoryId: ID): PostsResponse
-    getAllPosts: Posts
+    getAllPosts (from: Int, limit: Int): Posts
   }
 `;
 
@@ -21,7 +21,7 @@ const resolvers = {
       const posts = await getPostsByCategoryIdService(categoryId, userId);
       return posts;
     },
-    getAllPosts: async (_, $, { userId } ) => getAllPostsService(userId),
+    getAllPosts: async (_, { from, limit }, { userId } ) => getAllPostsService(userId, from, limit),
   },
 };
 
