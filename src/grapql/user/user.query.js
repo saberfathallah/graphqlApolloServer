@@ -1,6 +1,6 @@
 import { gql } from 'apollo-server';
 import { merge } from 'lodash';
-import { getAllUsers, getUserDetailsService} from './services';
+import { getAllUsers, getUserDetailsService } from './services';
 import Users from './types/user.type';
 
 const users = gql`
@@ -12,8 +12,8 @@ const users = gql`
 
 const resolvers = {
   Query: {
-    users: async () => await getAllUsers(),
-    getUserDetails: async (_, $, { userId } ) => await getUserDetailsService(userId),
+    users: async () => getAllUsers(),
+    getUserDetails: async (_, $, { userId }) => getUserDetailsService(userId),
   },
 };
 

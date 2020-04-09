@@ -11,7 +11,8 @@ const postsMutation = gql`
 
 const resolvers = {
   Mutation: {
-    addPost: (_,{ postInput }, { userId } ) => addPostService(postInput, userId),
+    addPost: (_, { postInput }, { userId }) =>
+      addPostService(postInput, userId),
   },
 };
 

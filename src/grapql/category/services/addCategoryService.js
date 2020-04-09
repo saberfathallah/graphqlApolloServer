@@ -8,7 +8,7 @@ async function addCategoryMS({ name, level, parentId }, userId) {
     headers: {
       'Content-Type': 'application/json',
       userid: userId,
-  },
+    },
   });
 }
 

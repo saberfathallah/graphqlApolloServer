@@ -24,6 +24,6 @@ export default {
     categoryQuery.resolvers,
     postMutation.resolvers,
     postQuery.resolvers,
-    commentMutation.resolvers,
+    commentMutation.resolvers
   ),
 };

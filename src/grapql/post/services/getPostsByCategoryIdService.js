@@ -3,7 +3,7 @@ import fetch from 'node-fetch';
 async function getPostsByCategoryIdMS(categoryId, userId) {
   const url = `${process.env.MS_USERS_URL_URI}posts/categories/${categoryId}`;
 
-    return fetch(url, {
+  return fetch(url, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',

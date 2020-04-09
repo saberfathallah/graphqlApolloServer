@@ -9,7 +9,7 @@ async function addCommentMS({ description, categoryId, postId }, userId) {
     headers: {
       'Content-Type': 'application/json',
       userid: userId,
-  },
+    },
   });
 }
 

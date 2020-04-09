@@ -8,7 +8,7 @@ async function deleteUserMS(email) {
     body: JSON.stringify({ email }),
     headers: {
       'Content-Type': 'application/json',
-  },
+    },
   });
 }
 

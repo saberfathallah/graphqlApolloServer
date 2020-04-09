@@ -7,7 +7,7 @@ async function deleteCategoryMS(categoryId, userId) {
     headers: {
       'Content-Type': 'application/json',
       userid: userId,
-  },
+    },
   });
 }
 

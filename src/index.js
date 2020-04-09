@@ -28,7 +28,7 @@ const baseResolvers = {
   },
 };
 
-const server = new ApolloServer({ 
+const server = new ApolloServer({
   typeDefs: [baseTypeDef, ...features.typeDefs],
   resolvers: merge(baseResolvers, features.resolvers),
   context: async ({ req }) => {
@@ -43,5 +43,5 @@ const app = express();
 server.applyMiddleware({ app });
 
 app.listen({ port: PORT }, () =>
-  console.log(`Now browse  to http://localhost:${PORT}` + server.graphqlPath)
+  console.log(`Now browse  to http://localhost:${PORT}${server.graphqlPath}`)
 );

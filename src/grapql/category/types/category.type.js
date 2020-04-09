@@ -5,7 +5,7 @@ const Categories = gql`
     error: String
     categories: [Category]
   }
-  
+
   type Category {
     id: ID
     name: String
@@ -13,13 +13,13 @@ const Categories = gql`
     parentId: ID
     children: [Category]
   }
-  
+
   input CategoryInput {
     name: String
     level: Int
     parentId: ID
   }
-  
+
   type CategoryResponse {
     category: Category
     error: String

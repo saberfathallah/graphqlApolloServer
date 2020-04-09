@@ -5,7 +5,7 @@ function verifyToken(token) {
     const decoded = jwt.verify(token, 'jwt_secret');
     return decoded.id;
   } catch (error) {
-  return null;
+    return null;
   }
 }
 
