@@ -12,8 +12,10 @@ const CategoryMutation = gql`
 
 const resolvers = {
   Mutation: {
-    addCategory: (_,{ categoryInput }, { userId } ) => addCategoryService(categoryInput, userId),
-    deleteCategory: (_,{ categoryId }, { userId } ) => deleteCategoryService(categoryId, userId),
+    addCategory: (_, { categoryInput }, { userId }) =>
+      addCategoryService(categoryInput, userId),
+    deleteCategory: (_, { categoryId }, { userId }) =>
+      deleteCategoryService(categoryId, userId),
   },
 };
 

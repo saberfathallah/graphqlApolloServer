@@ -8,7 +8,7 @@ async function createUserMS({ email, name, password }) {
     body: JSON.stringify({ email, name, password }),
     headers: {
       'Content-Type': 'application/json',
-  },
+    },
   });
 }
 

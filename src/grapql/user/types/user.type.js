@@ -5,14 +5,14 @@ const Users = gql`
     error: String
     users: [User]
   }
-  
+
   type User {
     email: String
     name: String
     password: String
     id: ID
   }
-  
+
   input UserInput {
     email: String
     name: String
@@ -23,7 +23,7 @@ const Users = gql`
     email: String
     password: String
   }
-  
+
   type UserResponse {
     user: User
     error: String

@@ -7,7 +7,7 @@ const Comments = gql`
     userId: User
     postId: String
   }
-  
+
   input CommentInput {
     description: String
     categoryId: ID

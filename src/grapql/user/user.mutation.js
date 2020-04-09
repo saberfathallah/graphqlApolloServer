@@ -13,9 +13,9 @@ const UserMutation = gql`
 
 const resolvers = {
   Mutation: {
-    createUser: (_,{ userInput } ) => createUserService(userInput),
-    deleteUser: (_,{ email } ) => deleteUserService(email),
-    login: (_,{ loginInput }, ctx ) => loginService(loginInput, ctx),
+    createUser: (_, { userInput }) => createUserService(userInput),
+    deleteUser: (_, { email }) => deleteUserService(email),
+    login: (_, { loginInput }, ctx) => loginService(loginInput, ctx),
   },
 };
 

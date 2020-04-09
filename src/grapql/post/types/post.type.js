@@ -6,7 +6,7 @@ const Posts = gql`
     posts: [Post]
     totalPosts: Int
   }
-  
+
   type Post {
     id: ID
     description: String
@@ -14,7 +14,7 @@ const Posts = gql`
     userId: User
     comments: [Comment]
   }
-  
+
   input PostInput {
     description: String
     categoryId: ID

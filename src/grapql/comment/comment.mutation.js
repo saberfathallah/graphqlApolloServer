@@ -1,6 +1,10 @@
 import { gql } from 'apollo-server';
 import { merge } from 'lodash';
-import { addCommentService, deleteCommentService, updateCommentService } from './services';
+import {
+  addCommentService,
+  deleteCommentService,
+  updateCommentService,
+} from './services';
 import Comments from './types/comment.type';
 
 const commentsMutation = gql`
@@ -13,10 +17,12 @@ const commentsMutation = gql`
 
 const resolvers = {
   Mutation: {
-    addComment: (_, { commentInput }, { userId } ) => addCommentService(commentInput, userId),
-    deleteComment: (_, { deleteCommentInput }, { userId } ) => deleteCommentService(deleteCommentInput, userId),
-    updateComment: (_, { updateCommentInput }, { userId } ) => updateCommentService(updateCommentInput, userId),
-
+    addComment: (_, { commentInput }, { userId }) =>
+      addCommentService(commentInput, userId),
+    deleteComment: (_, { deleteCommentInput }, { userId }) =>
+      deleteCommentService(deleteCommentInput, userId),
+    updateComment: (_, { updateCommentInput }, { userId }) =>
+      updateCommentService(updateCommentInput, userId),
   },
 };
 

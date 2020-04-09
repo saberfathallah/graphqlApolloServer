@@ -8,7 +8,7 @@ async function getUserDetailMS(userId) {
     headers: {
       'Content-Type': 'application/json',
       userid: userId,
-  },
+    },
   });
 }
 
