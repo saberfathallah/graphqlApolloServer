@@ -4,6 +4,7 @@ import {
   getPostsByUserIdService,
   getPostsByCategoryIdService,
   getAllPostsService,
+  searchService,
 } from './services';
 import Posts from './types/post.type';
 
@@ -12,6 +13,7 @@ const postsQueries = gql`
     getPostsByUserId: PostsResponse
     getPostsByCategoryId(categoryId: ID): PostsResponse
     getAllPosts(from: Int, limit: Int): Posts
+    search(query: String): PostsResponse
   }
 `;
 
@@ -27,6 +29,7 @@ const resolvers = {
     },
     getAllPosts: async (_, { from, limit }, { userId }) =>
       getAllPostsService(userId, from, limit),
+    search: async (_, { query }, { userId }) => searchService(query, userId),
   },
 };
 
