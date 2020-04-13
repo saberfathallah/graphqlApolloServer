@@ -6,6 +6,7 @@ import categoryQuery from './category/category.query';
 import postMutation from './post/post.mutation';
 import postQuery from './post/post.query';
 import commentMutation from './comment/comment.mutation';
+import likeMutation from './like/like.mutation';
 
 export default {
   typeDefs: [
@@ -16,6 +17,7 @@ export default {
     ...postMutation.typeDefs,
     ...postQuery.typeDefs,
     ...commentMutation.typeDefs,
+    ...likeMutation.typeDefs,
   ],
   resolvers: merge(
     userMutation.resolvers,
@@ -24,6 +26,7 @@ export default {
     categoryQuery.resolvers,
     postMutation.resolvers,
     postQuery.resolvers,
-    commentMutation.resolvers
+    commentMutation.resolvers,
+    likeMutation.resolvers
   ),
 };

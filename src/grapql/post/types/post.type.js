@@ -13,6 +13,7 @@ const Posts = gql`
     categoryId: String
     userId: User
     comments: [Comment]
+    likes: [ID]
   }
 
   input PostInput {
