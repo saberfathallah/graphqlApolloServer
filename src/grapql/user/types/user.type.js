@@ -31,6 +31,7 @@ const Users = gql`
   type UserLoginResponse {
     user: User
     token: String
+    error: String
   }
 `;
 
