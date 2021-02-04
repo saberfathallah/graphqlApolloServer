@@ -1,7 +1,7 @@
 import { gql } from 'apollo-server';
-import { merge } from 'lodash';
-import { getAllCategoriesServices } from './services';
+import merge from 'lodash/merge';
 import Categories from './types/category.type';
+import { get } from '../../facade/api';
 
 const categoryQueries = gql`
   extend type Query {
@@ -11,10 +11,8 @@ const categoryQueries = gql`
 
 const resolvers = {
   Query: {
-    getAllCategoriesQuery: async (_, $, { userId }) => {
-      const categories = await getAllCategoriesServices(userId);
-      return categories;
-    },
+    getAllCategoriesQuery: async (_, $, { userId }) =>
+      get('http://localhost:4001/categories', userId),
   },
 };
 

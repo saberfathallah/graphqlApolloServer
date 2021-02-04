@@ -1,7 +1,7 @@
 import { gql } from 'apollo-server';
-import { merge } from 'lodash';
-import { addPostService } from './services';
+import merge from 'lodash/merge';
 import Posts from './types/post.type';
+import { post } from '../../facade/api';
 
 const postsMutation = gql`
   extend type Mutation {
@@ -12,7 +12,7 @@ const postsMutation = gql`
 const resolvers = {
   Mutation: {
     addPost: (_, { postInput }, { userId }) =>
-      addPostService(postInput, userId),
+      post('http://localhost:4001/posts', userId, postInput),
   },
 };
 

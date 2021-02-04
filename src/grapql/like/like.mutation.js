@@ -1,7 +1,7 @@
 import { gql } from 'apollo-server';
-import { merge } from 'lodash';
-import { addLikeService, dislikeService } from './services';
+import merge from 'lodash/merge';
 import Likes from './types/like.type';
+import { remove, post } from '../../facade/api';
 
 const likesMutation = gql`
   extend type Mutation {
@@ -9,11 +9,13 @@ const likesMutation = gql`
     dislike(postId: ID): likeResponse
   }
 `;
-
+const likeUrl = 'http://localhost:4001/likes/';
 const resolvers = {
   Mutation: {
-    addLike: (_, { postId }, { userId }) => addLikeService(postId, userId),
-    dislike: (_, { postId }, { userId }) => dislikeService(postId, userId),
+    addLike: (_, { postId }, { userId }) =>
+      post(`${likeUrl}${postId}`, userId, { postId }),
+    dislike: (_, { postId }, { userId }) =>
+      remove(`${likeUrl}${postId}`, userId, { postId }),
   },
 };
 

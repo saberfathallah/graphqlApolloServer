@@ -1,7 +1,7 @@
 import { gql } from 'apollo-server';
-import { merge } from 'lodash';
-import { addCategoryService, deleteCategoryService } from './services';
+import merge from 'lodash/merge';
 import Categories from './types/category.type';
+import { remove, post } from '../../facade/api';
 
 const CategoryMutation = gql`
   extend type Mutation {
@@ -9,13 +9,13 @@ const CategoryMutation = gql`
     deleteCategory(categoryId: ID): DeleteCategoryResponse
   }
 `;
-
+const categoriesUrl = 'http://localhost:4001/categories';
 const resolvers = {
   Mutation: {
     addCategory: (_, { categoryInput }, { userId }) =>
-      addCategoryService(categoryInput, userId),
+      post(categoriesUrl, userId, categoryInput),
     deleteCategory: (_, { categoryId }, { userId }) =>
-      deleteCategoryService(categoryId, userId),
+      remove(`${categoriesUrl}/${categoryId}`, userId),
   },
 };
 

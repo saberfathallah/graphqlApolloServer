@@ -1,11 +1,7 @@
 import { gql } from 'apollo-server';
-import { merge } from 'lodash';
-import {
-  addCommentService,
-  deleteCommentService,
-  updateCommentService,
-} from './services';
+import merge from 'lodash/merge';
 import Comments from './types/comment.type';
+import { remove, post, put } from '../../facade/api';
 
 const commentsMutation = gql`
   extend type Mutation {
@@ -14,15 +10,23 @@ const commentsMutation = gql`
     updateComment(updateCommentInput: UpdateCommentInput): CommentResponse
   }
 `;
+const urlComment = 'http://localhost:4001/comments';
 
 const resolvers = {
   Mutation: {
     addComment: (_, { commentInput }, { userId }) =>
-      addCommentService(commentInput, userId),
-    deleteComment: (_, { deleteCommentInput }, { userId }) =>
-      deleteCommentService(deleteCommentInput, userId),
+      post(`${urlComment}/${commentInput.postId}`, userId, commentInput),
+    deleteComment: (
+      _,
+      { deleteCommentInput: { commentId, postId } },
+      { userId }
+    ) => remove(`${urlComment}/${commentId}`, userId, { postId }),
     updateComment: (_, { updateCommentInput }, { userId }) =>
-      updateCommentService(updateCommentInput, userId),
+      put(
+        `${urlComment}/${updateCommentInput.commentId}`,
+        userId,
+        updateCommentInput
+      ),
   },
 };
 

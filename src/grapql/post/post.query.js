@@ -1,12 +1,7 @@
 import { gql } from 'apollo-server';
-import { merge } from 'lodash';
-import {
-  getPostsByUserIdService,
-  getPostsByCategoryIdService,
-  getAllPostsService,
-  searchService,
-} from './services';
+import merge from 'lodash/merge';
 import Posts from './types/post.type';
+import { get } from '../../facade/api';
 
 const postsQueries = gql`
   extend type Query {
@@ -17,19 +12,17 @@ const postsQueries = gql`
   }
 `;
 
+const postsUrl = 'http://localhost:4001/posts';
+
 const resolvers = {
   Query: {
-    getPostsByUserId: async (_, $, { userId }) => {
-      const posts = await getPostsByUserIdService(userId);
-      return posts;
-    },
-    getPostsByCategoryId: async (_, { categoryId }, { userId }) => {
-      const posts = await getPostsByCategoryIdService(categoryId, userId);
-      return posts;
-    },
+    getPostsByUserId: async (_, $, { userId }) => get(postsUrl, userId),
+    getPostsByCategoryId: async (_, { categoryId }, { userId }) =>
+      get(`${postsUrl}/categories/${categoryId}`, userId),
     getAllPosts: async (_, { from, limit }, { userId }) =>
-      getAllPostsService(userId, from, limit),
-    search: async (_, { query }, { userId }) => searchService(query, userId),
+      get(`${postsUrl}/all/${from}/${limit}`, userId),
+    search: async (_, { query }, { userId }) =>
+      get(`${postsUrl}/${query}`, userId),
   },
 };
 

@@ -1,7 +1,7 @@
 import { gql } from 'apollo-server';
-import { merge } from 'lodash';
-import { createUserService, loginService, deleteUserService } from './services';
+import merge from 'lodash/merge';
 import Users from './types/user.type';
+import { remove, post } from '../../facade/api';
 
 const UserMutation = gql`
   extend type Mutation {
@@ -10,12 +10,12 @@ const UserMutation = gql`
     deleteUser(email: String): UserResponse
   }
 `;
-
+const usersUrl = 'http://localhost:4001/users';
 const resolvers = {
   Mutation: {
-    createUser: (_, { userInput }) => createUserService(userInput),
-    deleteUser: (_, { email }) => deleteUserService(email),
-    login: (_, { loginInput }, ctx) => loginService(loginInput, ctx),
+    createUser: (_, { userInput }) => post(usersUrl, null, userInput),
+    deleteUser: (_, { email }) => remove(usersUrl, null, { email }),
+    login: (_, { loginInput }) => post(`${usersUrl}/login`, null, loginInput),
   },
 };
 
