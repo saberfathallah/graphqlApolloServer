@@ -1,6 +1,6 @@
 import express from 'express';
 import dotenv from 'dotenv';
-import { merge } from 'lodash';
+import merge from 'lodash/merge';
 import { ApolloServer, gql } from 'apollo-server-express';
 
 import features from './grapql';

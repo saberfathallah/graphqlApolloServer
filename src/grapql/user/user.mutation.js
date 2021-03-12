@@ -1,5 +1,6 @@
 import { gql } from 'apollo-server';
 import merge from 'lodash/merge';
+
 import Users from './types/user.type';
 import { remove, post } from '../../facade/api';
 
@@ -10,7 +11,9 @@ const UserMutation = gql`
     deleteUser(email: String): UserResponse
   }
 `;
+
 const usersUrl = 'http://localhost:4001/users';
+
 const resolvers = {
   Mutation: {
     createUser: (_, { userInput }) => post(usersUrl, null, userInput),

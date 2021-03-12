@@ -1,5 +1,6 @@
 import { gql } from 'apollo-server';
 import merge from 'lodash/merge';
+
 import Likes from './types/like.type';
 import { remove, post } from '../../facade/api';
 

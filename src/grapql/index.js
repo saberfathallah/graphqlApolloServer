@@ -1,4 +1,4 @@
-import { merge } from 'lodash';
+import merge from 'lodash/merge';
 import userMutation from './user/user.mutation';
 import userQuery from './user/user.query';
 import categoryMutation from './category/category.mutation';

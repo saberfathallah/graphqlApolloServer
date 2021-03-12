@@ -1,5 +1,6 @@
 import { gql } from 'apollo-server';
 import merge from 'lodash/merge';
+
 import Categories from './types/category.type';
 import { remove, post } from '../../facade/api';
 
@@ -10,6 +11,7 @@ const CategoryMutation = gql`
   }
 `;
 const categoriesUrl = 'http://localhost:4001/categories';
+
 const resolvers = {
   Mutation: {
     addCategory: (_, { categoryInput }, { userId }) =>

@@ -1,5 +1,6 @@
 import { gql } from 'apollo-server';
 import merge from 'lodash/merge';
+
 import Comments from './types/comment.type';
 import { remove, post, put } from '../../facade/api';
 

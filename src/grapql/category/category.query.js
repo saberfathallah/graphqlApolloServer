@@ -1,5 +1,6 @@
 import { gql } from 'apollo-server';
 import merge from 'lodash/merge';
+
 import Categories from './types/category.type';
 import { get } from '../../facade/api';
 
